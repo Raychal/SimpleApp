@@ -2,5 +2,7 @@
     <string name="app_name">SimpleApp</string>
     <string name="olahraga">Olahraga</string>
     <string name="created_by_group_I">Created By Group I</string>
+    <string name="kelompok_i">Kelompok I</string>
+    <string name="tentang">Tentang</string>
 
 </resources>
