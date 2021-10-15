@@ -1,0 +1,23 @@
+{
+    "users": [{
+            "username" : "Fikri",
+            "name" : "Muhammad Fikri Zulfikar",
+            "avatar" : "@drawable/user1",
+            "nim" : 41820010077,
+            "alamat" : "Jln Keramat Batu Dalam, Jakarta Selatan",
+            "hobi" : "Menyelesaikan tugas kuliah mingguan",
+            "program_studi" : "Sistem Informasi",
+            "universitas" : "Universitas Mercubuana"
+        },
+        {
+            "username" : "Mada",
+            "name" : "Mada Maheswara",
+            "avatar" : "@drawable/user2",
+            "nim" : 41820010107,
+            "alamat" : "Graha Raya, Bintaro, Tanggerang Selatan",
+            "hobi" : "Bernafas",
+            "program_studi" : "Sistem Informasi",
+            "universitas" : "Universitas Mercubuana"
+        }
+    ]
+}

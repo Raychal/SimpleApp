@@ -4,5 +4,12 @@
     <string name="created_by_group_I">Created By Group I</string>
     <string name="kelompok_i">Kelompok I</string>
     <string name="tentang">Tentang</string>
+    <string name="username">Username :</string>
+    <string name="name">Name :</string>
+    <string name="nim">NIM :</string>
+    <string name="alamat">Alamat :</string>
+    <string name="hobi">Hobi :</string>
+    <string name="program_studi">Program Studi :</string>
+    <string name="universitas">Universitas :</string>
 
 </resources>

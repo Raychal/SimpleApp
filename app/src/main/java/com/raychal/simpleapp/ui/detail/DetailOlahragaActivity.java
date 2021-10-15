@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.raychal.simpleapp.R;
 
-public class OlahragaActivity extends AppCompatActivity {
+public class DetailOlahragaActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_olahraga);
+        setContentView(R.layout.activity_detail_olahraga);
     }
 }
