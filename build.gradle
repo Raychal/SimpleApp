@@ -4,7 +4,6 @@ buildscript {
     ext.recyclerview = "1.2.1"
     ext.circleimageview = "3.1.0"
     ext.cardview = "1.0.0"
-    ext.glide_version = "4.11.0"
     repositories {
         google()
         mavenCentral()

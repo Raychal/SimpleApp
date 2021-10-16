@@ -2,12 +2,17 @@ package com.raychal.simpleapp.ui.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+
+import com.raychal.simpleapp.databinding.ActivityDetailOlahragaBinding;
 import com.raychal.simpleapp.databinding.ActivityOlahragaBinding;
 import com.raychal.simpleapp.model.DiscussionModel;
 import com.raychal.simpleapp.ui.adapter.DiscussionAdapter;
+import com.raychal.simpleapp.ui.detail.DetailOlahragaActivity;
+import com.raychal.simpleapp.ui.detail.DetailTentangActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,9 +23,10 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-public class OlahragaActivity extends AppCompatActivity {
+public class OlahragaActivity extends AppCompatActivity implements DiscussionAdapter.OnDiscussionListener {
 
     private ActivityOlahragaBinding binding;
+    public static final String INTENT_PARCELABLE = "OBJECT_DISCUSSION";
     ArrayList<DiscussionModel> discussionModels;
     DiscussionAdapter adapter;
 
@@ -63,7 +69,7 @@ public class OlahragaActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         binding.rvOlahraga.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new DiscussionAdapter(this, discussionModels);
+        adapter = new DiscussionAdapter(this, discussionModels, this);
         binding.rvOlahraga.setAdapter(adapter);
         binding.rvOlahraga.setHasFixedSize(true);
     }
@@ -88,5 +94,12 @@ public class OlahragaActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return super.onSupportNavigateUp();
+    }
+
+    @Override
+    public void onDiscussionClick(int position) {
+        Intent intent = new Intent(this, DetailOlahragaActivity.class);
+        intent.putExtra("OBJECT_DISCUSSION", discussionModels.get(position));
+        startActivity(intent);
     }
 }

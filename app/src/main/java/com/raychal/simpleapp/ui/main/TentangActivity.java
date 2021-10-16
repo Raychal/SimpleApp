@@ -2,21 +2,17 @@ package com.raychal.simpleapp.ui.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
-
 import com.raychal.simpleapp.databinding.ActivityTentangBinding;
 import com.raychal.simpleapp.model.UserModel;
 import com.raychal.simpleapp.ui.adapter.UserAdapter;
 import com.raychal.simpleapp.ui.detail.DetailTentangActivity;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -25,7 +21,7 @@ import java.util.ArrayList;
 public class TentangActivity extends AppCompatActivity implements UserAdapter.OnUsersListener {
 
     private ActivityTentangBinding binding;
-    public static final String INTENT_PARCELABLE = "OBJECT_INTENT";
+    public static final String INTENT_PARCELABLE = "OBJECT_USER";
     ArrayList<UserModel> userModels;
     UserAdapter adapter;
 
@@ -39,7 +35,6 @@ public class TentangActivity extends AppCompatActivity implements UserAdapter.On
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         userModels = new ArrayList<>();
         extractUsers();
-//        recycleView();
     }
 
     private void extractUsers() {
@@ -90,9 +85,6 @@ public class TentangActivity extends AppCompatActivity implements UserAdapter.On
         return json;
     }
 
-//    private void recycleView() {
-//    }
-
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
@@ -101,9 +93,8 @@ public class TentangActivity extends AppCompatActivity implements UserAdapter.On
 
     @Override
     public void onUsersClick(int position) {
-//        userModels.get(position);
         Intent intent = new Intent(this, DetailTentangActivity.class);
-        intent.putExtra("OBJECT_INTENT", userModels.get(position));
+        intent.putExtra("OBJECT_USER", userModels.get(position));
         startActivity(intent);
     }
 }

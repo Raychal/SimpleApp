@@ -22,8 +22,8 @@ public class DetailTentangActivity extends AppCompatActivity {
         this.setTitle("Detail Anggota");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        if (getIntent().hasExtra("OBJECT_INTENT")){
-            UserModel userModel = (UserModel) this.getIntent().getParcelableExtra("OBJECT_INTENT");
+        if (getIntent().hasExtra("OBJECT_USER")){
+            UserModel userModel = (UserModel) this.getIntent().getParcelableExtra("OBJECT_USER");
             if (userModel != null){
                 binding.imageUser.setImageResource(Integer.parseInt(userModel.getAvatar()));
                 binding.tvUsername.setText(userModel.getUsername());

@@ -11,5 +11,9 @@
     <string name="hobi">Hobi :</string>
     <string name="program_studi">Program Studi :</string>
     <string name="universitas">Universitas :</string>
+    <string name="imagediscussion">ImageDiscussion</string>
+    <string name="pengertian">Pengertian</string>
+    <string name="sejarah">Sejarah</string>
+    <string name="referensi">Referensi</string>
 
 </resources>

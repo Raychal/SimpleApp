@@ -16,8 +16,32 @@ public class DiscussionModel implements Parcelable {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+    }
+
     public String getAvatar() {
         return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getAvatar_content() {
+        return avatar_content;
+    }
+
+    public void setAvatar_content(String avatar_content) {
+        this.avatar_content = avatar_content;
     }
 
     public String getContent() {
@@ -26,6 +50,22 @@ public class DiscussionModel implements Parcelable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getHistory() {
+        return history;
+    }
+
+    public void setHistory(String history) {
+        this.history = history;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     public DiscussionModel(String title, String subtitle, String avatar, String avatar_content, String content, String history, String reference) {

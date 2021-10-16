@@ -19,29 +19,26 @@ import java.util.ArrayList;
 public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.ViewHolder> {
     LayoutInflater inflater;
     ArrayList<DiscussionModel> discussionModels;
+    OnDiscussionListener onDiscussionListener;
 
-    public DiscussionAdapter (Context context, ArrayList<DiscussionModel> discussionModels){
+    public DiscussionAdapter (Context context, ArrayList<DiscussionModel> discussionModels, OnDiscussionListener onDiscussionListener){
         this.inflater = LayoutInflater.from(context);
         this.discussionModels = discussionModels;
+        this.onDiscussionListener = onDiscussionListener;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.item_user_layout, parent, false);
-        return new ViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user_layout, parent, false);
+        return new ViewHolder(view, onDiscussionListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.name.setText(discussionModels.get(position).getTitle());
         holder.image.setImageResource(Integer.parseInt(discussionModels.get(position).getAvatar()));
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(inflater.getContext(), "Hai",Toast.LENGTH_SHORT).show();
-            }
-        });
+
     }
 
     @Override
@@ -49,15 +46,32 @@ public class DiscussionAdapter extends RecyclerView.Adapter<DiscussionAdapter.Vi
         return discussionModels.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements OnDiscussionListener, View.OnClickListener {
         TextView name;
         ImageView image;
+        OnDiscussionListener onDiscussionListener;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnDiscussionListener onDiscussionListener) {
             super(itemView);
 
             name = itemView.findViewById(R.id.tv_name_main);
             image = itemView.findViewById(R.id.image);
+            this.onDiscussionListener = onDiscussionListener;
+
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onDiscussionClick(int position) {
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            onDiscussionListener.onDiscussionClick(getAbsoluteAdapterPosition());
+        }
+    }
+    public interface OnDiscussionListener{
+        void onDiscussionClick(int position);
     }
 }

@@ -41,7 +41,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         return userModels.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements OnUsersListener, View.OnClickListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements OnUsersListener, View.OnClickListener {
         TextView name;
         ImageView image;
         OnUsersListener onUsersListener;
