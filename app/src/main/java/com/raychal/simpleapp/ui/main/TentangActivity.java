@@ -19,7 +19,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class TentangActivity extends AppCompatActivity implements UserAdapter.OnUsersListener {
-
+    
     private ActivityTentangBinding binding;
     public static final String INTENT_PARCELABLE = "OBJECT_USER";
     ArrayList<UserModel> userModels;
@@ -48,15 +48,15 @@ public class TentangActivity extends AppCompatActivity implements UserAdapter.On
                 String username = user.getString("username");
                 String name = user.getString("name");
                 String avatar = user.getString("avatar");
-                int nim = user.getInt("nim");
+                String nim= user.getString("nim");
                 String alamat = user.getString("alamat");
                 String hobi = user.getString("hobi");
                 String program_studi = user.getString("program_studi");
                 String universitas = user.getString("universitas");
 
-                String resourceId = String.valueOf(resources.getIdentifier(avatar, "drawbale", this.getPackageName()));
+                int resourceId = resources.getIdentifier(avatar, "drawbale", this.getPackageName());
 
-                UserModel userDetails = new UserModel(username, name, resourceId, nim, alamat, hobi, program_studi, universitas);
+                UserModel userDetails = new UserModel(username, name, String.valueOf(resourceId), nim, alamat, hobi, program_studi, universitas);
 
                 userModels.add(userDetails);
             }

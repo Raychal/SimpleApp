@@ -28,7 +28,7 @@ public class DetailTentangActivity extends AppCompatActivity {
                 binding.imageUser.setImageResource(Integer.parseInt(userModel.getAvatar()));
                 binding.tvUsername.setText(userModel.getUsername());
                 binding.tvName.setText(userModel.getName());
-                binding.tvNim.setText((CharSequence)String.valueOf(userModel.getNim()));
+                binding.tvNim.setText(userModel.getNim());
                 binding.tvAlamat.setText(userModel.getAlamat());
                 binding.tvHobi.setText(userModel.getHobi());
                 binding.tvProdi.setText(userModel.getProgram_studi());

@@ -7,7 +7,7 @@ public class UserModel implements Parcelable {
     private String username;
     private String name;
     private String avatar;
-    private Integer nim;
+    private String nim;
     private String alamat;
     private String hobi;
     private String program_studi;
@@ -37,11 +37,11 @@ public class UserModel implements Parcelable {
         this.avatar = avatar;
     }
 
-    public Integer getNim() {
+    public String getNim() {
         return nim;
     }
 
-    public void setNim(Integer nim) {
+    public void setNim(String nim) {
         this.nim = nim;
     }
 
@@ -77,7 +77,7 @@ public class UserModel implements Parcelable {
         this.universitas = universitas;
     }
 
-    public UserModel(String username, String name, String avatar, Integer nim, String alamat, String hobi, String program_studi, String universitas) {
+    public UserModel(String username, String name, String avatar, String nim, String alamat, String hobi, String program_studi, String universitas) {
         this.username = username;
         this.name = name;
         this.avatar = avatar;
@@ -88,49 +88,21 @@ public class UserModel implements Parcelable {
         this.universitas = universitas;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.username);
-        dest.writeString(this.name);
-        dest.writeString(this.avatar);
-        dest.writeValue(this.nim);
-        dest.writeString(this.alamat);
-        dest.writeString(this.hobi);
-        dest.writeString(this.program_studi);
-        dest.writeString(this.universitas);
-    }
-
-    public void readFromParcel(Parcel source) {
-        this.username = source.readString();
-        this.name = source.readString();
-        this.avatar = source.readString();
-        this.nim = (Integer) source.readValue(Integer.class.getClassLoader());
-        this.alamat = source.readString();
-        this.hobi = source.readString();
-        this.program_studi = source.readString();
-        this.universitas = source.readString();
-    }
-
     protected UserModel(Parcel in) {
-        this.username = in.readString();
-        this.name = in.readString();
-        this.avatar = in.readString();
-        this.nim = (Integer) in.readValue(Integer.class.getClassLoader());
-        this.alamat = in.readString();
-        this.hobi = in.readString();
-        this.program_studi = in.readString();
-        this.universitas = in.readString();
+        username = in.readString();
+        name = in.readString();
+        avatar = in.readString();
+        nim = in.readString();
+        alamat = in.readString();
+        hobi = in.readString();
+        program_studi = in.readString();
+        universitas = in.readString();
     }
 
-    public static final Parcelable.Creator<UserModel> CREATOR = new Parcelable.Creator<UserModel>() {
+    public static final Creator<UserModel> CREATOR = new Creator<UserModel>() {
         @Override
-        public UserModel createFromParcel(Parcel source) {
-            return new UserModel(source);
+        public UserModel createFromParcel(Parcel in) {
+            return new UserModel(in);
         }
 
         @Override
@@ -138,4 +110,21 @@ public class UserModel implements Parcelable {
             return new UserModel[size];
         }
     };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(username);
+        dest.writeString(name);
+        dest.writeString(avatar);
+        dest.writeString(nim);
+        dest.writeString(alamat);
+        dest.writeString(hobi);
+        dest.writeString(program_studi);
+        dest.writeString(universitas);
+    }
 }

@@ -22,7 +22,7 @@
         <activity android:name=".ui.main.TentangActivity" />
         <activity android:name=".ui.main.OlahragaActivity" />
         <activity android:name=".ui.detail.DetailTentangActivity" />
-        <activity android:name=".ui.detail.DetailOlahragaActivity"/>
+        <activity android:name=".ui.detail.DetailOlahragaActivity" />
     </application>
 
 </manifest>
