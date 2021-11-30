@@ -16,5 +16,9 @@
     <string name="sejarah">Sejarah</string>
     <string name="referensi">Referensi</string>
     <string name="activity_3">Activity 3</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="regis">Register</string>
 
 </resources>

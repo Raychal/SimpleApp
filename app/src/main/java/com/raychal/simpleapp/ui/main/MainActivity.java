@@ -20,17 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         this.setTitle("Halaman Utama");
 
-        binding.tentang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity( new Intent(MainActivity.this, TentangActivity.class));
-            }
-        });
-        binding.olahraga.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity( new Intent(MainActivity.this, OlahragaActivity.class));
-            }
-        });
+        binding.tentang.setOnClickListener(v -> startActivity( new Intent(MainActivity.this, TentangActivity.class)));
+        binding.olahraga.setOnClickListener(v -> startActivity( new Intent(MainActivity.this, OlahragaActivity.class)));
     }
 }
