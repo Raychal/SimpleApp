@@ -19,6 +19,7 @@ public class SqliteHelper extends SQLiteOpenHelper {
 
     //TABLE NAME
     public static final String TABLE_USERS = "users";
+    public static final String TABLE_SESSION = "session";
 
     //TABLE USERS COLUMNS
     //ID COLUMN @primaryKey
@@ -33,13 +34,22 @@ public class SqliteHelper extends SQLiteOpenHelper {
     //COLUMN password
     public static final String KEY_PASSWORD = "password";
 
+    //COLUMN login
+    public static final String KEY_LOGIN = "login";
+
     //SQL for creating users table
     public static final String SQL_TABLE_USERS = " CREATE TABLE " + TABLE_USERS
             + " ( "
-            + KEY_ID + " INTEGER PRIMARY KEY, "
+            + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + KEY_USER_NAME + " TEXT, "
             + KEY_EMAIL + " TEXT, "
             + KEY_PASSWORD + " TEXT"
+            + " ) ";
+
+    public static final String SQL_TABLE_SESSION = " CREATE TABLE " + TABLE_SESSION
+            + " ( "
+            + KEY_ID + " INTEGER PRIMARY KEY, "
+            + KEY_LOGIN + " TEXT "
             + " ) ";
 
 
@@ -50,14 +60,32 @@ public class SqliteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         //Create Table when oncreate gets called
+        sqLiteDatabase.execSQL(SQL_TABLE_SESSION);
         sqLiteDatabase.execSQL(SQL_TABLE_USERS);
-
+        sqLiteDatabase.execSQL("INSERT INTO session(id, login) VALUES (1, 'kosong')");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         //drop table to create new one if database version updated
+        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TABLE_SESSION);
         sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TABLE_USERS);
+    }
+
+    //check session
+    public boolean checkSession(String seessionValues) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT * FROM session WHERE login = ? ", new String[]{seessionValues});
+        return cursor.getCount() > 0;
+    }
+
+    //upgrade session
+    public boolean upgradeSession(String sessionValues, int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("login", sessionValues);
+        long update = db.update("session", contentValues, "id="+id, null);
+        return update != -1;
     }
 
     //using this method we can add users to user table

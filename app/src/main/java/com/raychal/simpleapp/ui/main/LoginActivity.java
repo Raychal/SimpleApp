@@ -54,12 +54,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             //Check Authentication is successful or not
             if (currentUser != null) {
-                Snackbar.make(binding.btnLogin, "Successfully Logged in!", Snackbar.LENGTH_LONG).show();
+                boolean updateSession = sqliteHelper.upgradeSession("ada", 1);
+                if (updateSession){
+                    Snackbar.make(binding.btnLogin, "Successfully Logged in!", Snackbar.LENGTH_LONG).show();
 
-                //User Logged in Successfully Launch You home screen activity
-                Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-                startActivity(intent);
-                finish();
+                    //User Logged in Successfully Launch You home screen activity
+                    Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             } else {
 
                 //User Logged in Failed
